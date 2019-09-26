@@ -6,7 +6,7 @@ const { SignUpResponse } = require('../models/SignUpResponse');
 const getUsersCtrl = async (req, reply) => {
     try{
         const {page} = req.query;
-        const users = [] ;
+   /*   const users = [] ;
         debugger
         const us = User.find();
         JSON.stringify(us, function(key, value) {
@@ -19,9 +19,9 @@ const getUsersCtrl = async (req, reply) => {
         });
         reply.send(users); 
         cache = null; // Enable garbage collection
-        
-        //const users = await getUsers({page});
-        
+  */      
+        const users = await getUsers({page});
+        return users;
     } catch(err) {
         console.log(err);
         throw err;
