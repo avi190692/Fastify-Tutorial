@@ -8,9 +8,9 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/customer-service/app.js",
+            "program": "${workspaceFolder}/app.js",
             "env" : {
-                "APP_SETTINGS_FILE_PATH": "/media/ansuavi/0031da7e-cf19-4078-8bea-07eb920a45c1/DilKhus/customer-service/config/settings.json"
+                "SETTINGS": "${workspaceFolder}/config/settings.json"
             }
         }
     ]
