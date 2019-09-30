@@ -35,20 +35,14 @@ const findUserByNameCtrl = async (req, reply) => {
     }
 }
 
-const registerUserCtrl = async(req, reply) => {
-    try{
-        const {email, password} = req.body;
-        const user = new User({
-            email,
-            password
-        });
-        const newUser = await user.save();
-        const { id, email: userEmail } = newUser;
-        const res = new SignUpResponse({ id, email });
-        reply.send(res);
-    } catch(err) {
-        console.log(err);
-        throw err;
+const registerUserCtrl = async (req, res) => {
+    const user = new User(req.body)
+    try {
+        await user.save()
+        const token = await user.generateAuthToken()
+        res.status(201).send({ user, token })
+    } catch (e) {
+        res.status(400).send(e)
     }
 }
 
